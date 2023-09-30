@@ -2,7 +2,7 @@
 
 namespace Webkul\Bulkupload\DataGrids\Admin;
 
-use Illuminate\Support\Facades\DB;
+use DB;
 use Webkul\Ui\DataGrid\DataGrid;
 
 /**
@@ -15,11 +15,6 @@ class ProfileDataGrid extends DataGrid
      * @var integer
      */
     protected $index = 'id';
-
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     public function prepareQueryBuilder()
     {
@@ -38,7 +33,6 @@ class ProfileDataGrid extends DataGrid
     public function addColumns()
     {
         $this->addColumn([
-            'title'      => '',
             'index'      => 'profile_name',
             'label'      => trans('bulkupload::app.admin.bulk-upload.data-flow-profile.name'),
             'type'       => 'string',
@@ -48,9 +42,8 @@ class ProfileDataGrid extends DataGrid
         ]);
 
         $this->addColumn([
-            'title'      => '',
             'index'      => 'name',
-            'label'      => trans('admin::app.catalog.products.family'),
+            'label'      => trans('admin::app.catalog.products.familiy'),
             'type'       => 'string',
             'searchable' => true,
             'sortable'   => true,
@@ -58,7 +51,6 @@ class ProfileDataGrid extends DataGrid
         ]);
 
         $this->addColumn([
-            'title'      => '',
             'index'      => 'created_at',
             'label'      => trans('bulkupload::app.admin.bulk-upload.data-flow-profile.data-grid.created-at'),
             'type'       => 'datetime',
@@ -71,7 +63,6 @@ class ProfileDataGrid extends DataGrid
     public function prepareActions()
     {
         $this->addAction([
-            'title'  => '',
             'type'   => 'Edit',
             'method' => 'GET',
             'route'  => 'bulkupload.admin.profile.edit',
@@ -79,7 +70,6 @@ class ProfileDataGrid extends DataGrid
         ]);
 
         $this->addAction([
-            'title'         => '',
             'type'          => trans('admin::app.datagrid.delete'),
             'method'        => 'POST',
             'route'         => 'bulkupload.admin.profile.delete',
@@ -89,7 +79,7 @@ class ProfileDataGrid extends DataGrid
 
         $this->enableAction = true;
     }
-    /*
+
     public function prepareMassActions()
     {
         $this->addMassAction([
@@ -98,5 +88,5 @@ class ProfileDataGrid extends DataGrid
             'action' => route('bulkupload.admin.profile.massDelete'),
             'method' => 'DELETE'
         ]);
-    }*/
+    }
 }

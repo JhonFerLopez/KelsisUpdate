@@ -230,6 +230,7 @@ return [
         Webkul\Bulkupload\Providers\BulkUploadServiceProvider::class,
         Wontonee\Payu\Providers\PayuServiceProvider::class,
         Webkul\Preparation\Providers\PreparationServiceProvider::class,
+        Webkul\Geography\Providers\GeographyServiceProvider::class,
     ])->toArray(),
 
     /*

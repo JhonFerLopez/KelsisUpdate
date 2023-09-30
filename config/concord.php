@@ -41,5 +41,6 @@ return [
         \Webkul\Sitemap\Providers\ModuleServiceProvider::class,
         \Webkul\Bulkupload\Providers\ModuleServiceProvider::class,
         \Webkul\Preparation\Providers\ModuleServiceProvider::class,
+        \Webkul\Geography\Providers\ModuleServiceProvider::class,
     ],
 ];

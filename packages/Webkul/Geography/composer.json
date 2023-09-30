@@ -1,0 +1,25 @@
+{
+    "name": "bagisto/laravel-geography",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "John Lopez",
+            "email": "john.lopez@ziel.com.co"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Webkul\\Geography\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webkul\\Geography\\Providers\\GeographyServiceProvider"
+            ],
+            "aliases": { }
+        }
+    },
+    "minimum-stability": "dev"
+}

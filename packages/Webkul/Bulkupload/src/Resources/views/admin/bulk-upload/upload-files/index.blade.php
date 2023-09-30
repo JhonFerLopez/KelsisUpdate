@@ -143,7 +143,7 @@
     <script type="text/x-template" id="attribute-family-template">
         <div>
             <div class="control-group {{ $errors->first('attribute_family') ? 'has-error' :'' }}">
-                <label for="attribute_family" class="required">{{ __('admin::app.catalog.products.family') }}</label>
+                <label for="attribute_family" class="required">{{ __('admin::app.catalog.products.familiy') }}</label>
 
                 <select @change="onChange()" v-model="key" class="control" id="attribute_family" name="attribute_family" {{ $familyId ? 'disabled' : '' }}>
                     <option value="">
