@@ -43,9 +43,10 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        if (request()->ajax()) {
+        echo "hola mundo HAHAHAHAHAHAH";
+        /*if (request()->ajax()) {
             return app(DepartmentDataGrid::class)->toJson();
-        }
+        }*/
 
         return view($this->_config['view']);
     }
