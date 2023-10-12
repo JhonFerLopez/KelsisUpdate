@@ -1702,9 +1702,9 @@ return [
             'logo-size'                             => 'Image resolution should be like 112px X 41px',
             'favicon-size'                          => 'Image resolution should be like 16px X 16px',
             'invoice-logo-size'                     => 'Image resolution should be like 192px X 50px',
-            'payu-merchant-key'                     => 'Merchant Key',
-            'payu-salt-key'                         => 'Salt Key',
-            'payu-websitestatus'                    => 'Sandbox/Live',
+            'placetopay-merchant-key'                     => 'Merchant Key',
+            'placetopay-salt-key'                         => 'Salt Key',
+            'placetopay-websitestatus'                    => 'Sandbox/Live',
         ],
     ],
 

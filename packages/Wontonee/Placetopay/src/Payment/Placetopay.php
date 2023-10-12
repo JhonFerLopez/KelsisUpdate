@@ -1,21 +1,21 @@
 <?php
 
-namespace Wontonee\Payu\Payment;
+namespace Wontonee\Placetopay\Payment;
 
 use Webkul\Payment\Payment\Payment;
 
-class Payu extends Payment
+class Placetopay extends Payment
 {
     /**
      * Payment method code
      *
      * @var string
      */
-    protected $code  = 'payu';
+    protected $code  = 'placetopay';
 
     public function getRedirectUrl()
     {
-        return route('payu.process');
+        return route('placetopay.process');
         
     }
 }

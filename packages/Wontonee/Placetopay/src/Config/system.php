@@ -2,8 +2,8 @@
 
 return [
     [
-        'key'    => 'sales.paymentmethods.payu',
-        'name'   => 'Payu',
+        'key'    => 'sales.paymentmethods.placetopay',
+        'name'   => 'Placatopay',
         'sort'   => 6,
         'fields' => [
             [
@@ -21,8 +21,8 @@ return [
                 'locale_based'  => true,
             ], 
             [
-                'name'          => 'payu_merchant_key',
-                'title'         => 'admin::app.admin.system.payu-merchant-key',
+                'name'          => 'placetopay_merchant_key',
+                'title'         => 'admin::app.admin.system.placetopay-merchant-key',
                 'type'          => 'text',
                 'validation'    => 'required',
                 'channel_based' => false,
@@ -30,15 +30,15 @@ return [
             ],	
 			[
                 'name'          => 'salt_key',
-                'title'         => 'admin::app.admin.system.payu-salt-key',
+                'title'         => 'admin::app.admin.system.placetopay-salt-key',
                 'type'          => 'text',
                 'validation'    => 'required',
                 'channel_based' => false,
                 'locale_based'  => true,
             ],
             [
-                'name'    => 'payu-website',
-                'title'   => 'admin::app.admin.system.payu-websitestatus',
+                'name'    => 'placetopay-website',
+                'title'   => 'admin::app.admin.system.placetopay-websitestatus',
                 'type'    => 'select',
                 'options' => [
                     [

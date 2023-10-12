@@ -228,7 +228,7 @@ return [
         Webkul\Kelsis\Providers\KelsisServiceProvider::class,
         Smartarget\WhatsappContactUs\Providers\WhatsappContactUsServiceProvider::class,
         Webkul\Bulkupload\Providers\BulkUploadServiceProvider::class,
-        Wontonee\Payu\Providers\PayuServiceProvider::class,
+        Wontonee\Placetopay\Providers\PlacetopayServiceProvider::class,
         Webkul\Preparation\Providers\PreparationServiceProvider::class,
         Webkul\Geography\Providers\GeographyServiceProvider::class,
     ])->toArray(),

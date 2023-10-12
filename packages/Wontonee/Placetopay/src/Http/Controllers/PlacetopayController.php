@@ -1,14 +1,14 @@
 <?php
 
 
-namespace Wontonee\Payu\Http\Controllers;
+namespace Wontonee\Placetopay\Http\Controllers;
 
 use Webkul\Checkout\Facades\Cart;
 use Webkul\Sales\Repositories\OrderRepository;
 use Webkul\Sales\Repositories\InvoiceRepository;
 use Illuminate\Support\Facades\Config;
 
-class PayuController extends Controller
+class PlacetopayController extends Controller
 {
 
 	/**
@@ -49,14 +49,14 @@ class PayuController extends Controller
 
 		$billingAddress = $cart->billing_address;
 
-		$MERCHANT_KEY = core()->getConfigData('sales.paymentmethods.payu.payu_merchant_key');
-		$SALT = core()->getConfigData('sales.paymentmethods.payu.salt_key');
+		$MERCHANT_KEY = core()->getConfigData('sales.paymentmethods.placetopay.placetopay_merchant_key');
+		$SALT = core()->getConfigData('sales.paymentmethods.placetopay.salt_key');
 
 
-		if (core()->getConfigData('sales.paymentmethods.payu.payu-website') == "Sandbox") :
-			$PAYU_BASE_URL = "https://sandboxsecure.payu.in";        // For Sandbox Mode
+		if (core()->getConfigData('sales.paymentmethods.placetopay.placetopay-website') == "Sandbox") :
+			$PAYU_BASE_URL = "https://checkout.test.goupagos.com.co";        // For Sandbox Mode
 		else :
-			$PAYU_BASE_URL = "https://secure.payu.in";        // For Sandbox Mode
+			$PAYU_BASE_URL = "https://checkout.test.goupagos.com.co";        // For Sandbox Mode
 		endif;
 
 		$shipping_rate = $cart->selected_shipping_rate ? $cart->selected_shipping_rate->price : 0; // shipping rate
@@ -70,8 +70,8 @@ class PayuController extends Controller
 			"firstname" => $billingAddress->name,
 			"email" => $billingAddress->email,
 			"phone" => $billingAddress->phone,
-			"surl" => route('payu.success'),
-			"furl" => route('payu.failure'),
+			"surl" => route('placetopay.success'),
+			"furl" => route('placetopay.failure'),
 			"curl" => "cancel",
 			"hash" => '',
 			"productinfo" => 'Bagisto Order no ' . $cart->id
@@ -90,7 +90,7 @@ class PayuController extends Controller
 		$hash_string .= $SALT;
 		$hash = strtolower(hash('sha512', $hash_string));
 		$action = $PAYU_BASE_URL . '/_payment';
-		return view('payu::payu-redirect')->with(compact('MERCHANT_KEY', 'SALT', 'action', 'posted', 'hash'));
+		return view('placetopay::placetopay-redirect')->with(compact('MERCHANT_KEY', 'SALT', 'action', 'posted', 'hash'));
 	}
 
 	/**
@@ -115,7 +115,7 @@ class PayuController extends Controller
 	 */
 	public function failure()
 	{
-		session()->flash('error', 'Payu payment either cancelled or transaction failure.');
+		session()->flash('error', 'Placetopay payment either cancelled or transaction failure.');
 		return redirect()->route('shop.checkout.cart.index');
 	}
 

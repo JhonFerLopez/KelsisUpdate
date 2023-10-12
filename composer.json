@@ -114,7 +114,7 @@
 			"Webkul\\Marketing\\": "packages/Webkul/Marketing/src",
 			"Webkul\\Notification\\": "packages/Webkul/Notification/src",
 			"Webkul\\Sitemap\\": "packages/Webkul/Sitemap/src",
-			"Wontonee\\Payu\\": "packages/Wontonee/Payu/src",
+			"Wontonee\\Placetopay\\": "packages/Wontonee/Placetopay/src",
 			"Webkul\\Preparation\\": "packages/Webkul/Preparation/src",
 			"Webkul\\Geography\\": "packages/Webkul/Geography/src"
 		}

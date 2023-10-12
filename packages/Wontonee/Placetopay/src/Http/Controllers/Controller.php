@@ -1,6 +1,6 @@
 <?php
 
-namespace Wontonee\Payu\Http\Controllers;
+namespace Wontonee\Placetopay\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

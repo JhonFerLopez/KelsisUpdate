@@ -1782,9 +1782,9 @@ return [
             'set-order-status'                      => 'Asignar el estado de la orden después de crear la factura a',
             'generate-invoice-applicable'           => 'Aplicable si la generación automática de facturas está habilitada',
             'records-found'                         => 'registros encontrados',
-            'payu-merchant-key'                     => 'Merchant Key',
-            'payu-salt-key'                         => 'Salt Key',
-            'payu-websitestatus'                    => 'Sandbox/Live',
+            'placetopay-merchant-key'                     => 'Merchant Key',
+            'placetopay-salt-key'                         => 'Salt Key',
+            'placetopay-websitestatus'                    => 'Sandbox/Live',
         ],
     ],
 
