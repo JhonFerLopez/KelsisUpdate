@@ -1,4 +1,4 @@
-<header class="">
+<header class="" style="border: 3px solid blue; background: silver" >
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
 		<div class="container k-container">
 			<a class="left navbar-brand" href="{{ route('shop.home.index') }}" aria-label="Logo"
@@ -11,7 +11,7 @@
 			<div class="collapse navbar-collapse" id="ftco-nav" style="border: 1px solid blue;">
 				<ul class="navbar-nav m-auto">
 					<li class="nav-item active">
-						<a href="#" class="nav-link">Home</a>
+						<a href="#" class="nav-link">Homerrr</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Page</a>
@@ -27,9 +27,8 @@
 					<li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
 				</ul>
 			</div>
-			@include('kelsis::shop.layouts.particals.search-bar')
 			
-			<div class="left-wrapper k-left-wrapper" style="border: 1px solid yellow;">
+			<div class="left-wrapper k-left-wrapper" style="border: 3px solid red; background: silver">
 
 				@include('kelsis::shop.layouts.particals.header-compts', ['isText' => true])
 

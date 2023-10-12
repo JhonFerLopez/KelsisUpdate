@@ -1,128 +1,124 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
-    <head>
-        {{-- title --}}
-        <title>@yield('page_title')</title>
+<head>
+	{{-- title --}}
+	<title>@yield('page_title')</title>
 
-        {{-- meta data --}}
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta http-equiv="content-language" content="{{ app()->getLocale() }}">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="base-url" content="{{ url()->to('/') }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	{{-- meta data --}}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="content-language" content="{{ app()->getLocale() }}">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+	<meta name="base-url" content="{{ url()->to('/') }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        {!! view_render_event('bagisto.shop.layout.head') !!}
+	{!! view_render_event('bagisto.shop.layout.head') !!}
 
-        {{-- for extra head data --}}
-        @yield('head')
+	{{-- for extra head data --}}
+	@yield('head')
 
-        {{-- seo meta data --}}
-        @yield('seo')
+	{{-- seo meta data --}}
+	@yield('seo')
 
-        {{-- fav icon --}}
-        @if ($favicon = core()->getCurrentChannel()->favicon_url)
-            <link rel="icon" sizes="16x16" href="{{ $favicon }}" />
-        @else
-            <link rel="icon" sizes="16x16" href="{{ asset('/themes/velocity/assets/images/static/v-icon.png') }}" />
-        @endif
+	{{-- fav icon --}}
+	@if ($favicon = core()->getCurrentChannel()->favicon_url)
+	<link rel="icon" sizes="16x16" href="{{ $favicon }}" />
+	@else
+	<link rel="icon" sizes="16x16" href="{{ asset('/themes/velocity/assets/images/static/v-icon.png') }}" />
+	@endif
 
-        {{-- all styles --}}
-        @include('shop::layouts.styles')
-    </head>
+	{{-- all styles --}}
+	@include('shop::layouts.styles')
+</head>
 
-    <body @if (core()->getCurrentLocale() && core()->getCurrentLocale()->direction === 'rtl') class="rtl" @endif>
-        {!! view_render_event('bagisto.shop.layout.body.before') !!}
+<body @if (core()->getCurrentLocale() && core()->getCurrentLocale()->direction === 'rtl') class="rtl" @endif>
+	{!! view_render_event('bagisto.shop.layout.body.before') !!}
 
-        {{-- main app --}}
-        <div id="app">
-            <product-quick-view v-if="$root.quickView"></product-quick-view>
+	{{-- main app --}}
+	<div id="app">
+		<product-quick-view v-if="$root.quickView"></product-quick-view>
 
-            <div class="main-container-wrapper">
+		<div class="main-container-wrapper">
 
-                @section('body-header')
-                    {{-- top nav which contains currency, locale and login header --}}
-                    @include('shop::layouts.top-nav.index')
+			@section('body-header')
+			{{-- top nav which contains currency, locale and login header --}}
+			@include('shop::layouts.top-nav.index')
 
-                    {!! view_render_event('bagisto.shop.layout.header.before') !!}
+			{!! view_render_event('bagisto.shop.layout.header.before') !!}
 
-                        {{-- primary header after top nav --}}
-                        @include('shop::layouts.header.index')
+			{{-- primary header after top nav --}}
+			@include('shop::layouts.header.index')
 
-                    {!! view_render_event('bagisto.shop.layout.header.after') !!}
+			{!! view_render_event('bagisto.shop.layout.header.after') !!}
 
-                    <div class="main-content-wrapper col-12 no-padding">
+			<div class="main-content-wrapper col-12 no-padding">
 
-                        {{-- secondary header --}}
-                        
-                        <header class="row velocity-divide-page vc-header header-shadow active k-hidden">
+				{{-- secondary header --}}
 
-                            {{-- mobile header --}}
-                            <div class="vc-small-screen container" v-if='$root.currentScreen <= 992'>
-                                @include('shop::layouts.header.mobile')
-                            </div>
+				<header class="row velocity-divide-page vc-header header-shadow active k-hidden">
 
-                            {{-- desktop header --}}
+					{{-- mobile header --}}
+					<div class="vc-small-screen container" v-if='$root.currentScreen <= 992'>
+						@include('shop::layouts.header.mobile')
+					</div>
 
-                            @include('shop::layouts.header.desktop')
+					{{-- desktop header --}}
 
-                        </header>
+					@include('shop::layouts.header.desktop')
 
-                        <div class="">
-                            <div class="row col-12 remove-padding-margin">
-                                <sidebar-component
-                                    main-sidebar=true
-                                    id="sidebar-level-0"
-                                    url="{{ url()->to('/') }}"
-                                    category-count="{{ $velocityMetaData ? $velocityMetaData->sidebar_category_count : 10 }}"
-                                    add-class="category-list-container pt10">
-                                </sidebar-component>
+				</header>
 
-                                <div class="col-12 no-padding content" id="home-right-bar-container">
-                                    <div class="container-right row no-margin col-12 no-padding">
-                                        {!! view_render_event('bagisto.shop.layout.content.before') !!}
+				<div class="">
+					<div class="row col-12 remove-padding-margin">
+						<sidebar-component main-sidebar=true id="sidebar-level-0" url="{{ url()->to('/') }}" category-count="{{ $velocityMetaData ? $velocityMetaData->sidebar_category_count : 10 }}" add-class="category-list-container pt10">
+						</sidebar-component>
 
-                                            @yield('content-wrapper')
+						<div class="col-12 no-padding content" id="home-right-bar-container">
+							<div class="container-right row no-margin col-12 no-padding">
+								{!! view_render_event('bagisto.shop.layout.content.before') !!}
 
-                                        {!! view_render_event('bagisto.shop.layout.content.after') !!}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @show
+								@yield('content-wrapper')
 
-                <div class="container">
-                    {!! view_render_event('bagisto.shop.layout.full-content.before') !!}
+								{!! view_render_event('bagisto.shop.layout.content.after') !!}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			@show
 
-                        @yield('full-content-wrapper')
+			<div class="container">
+				{!! view_render_event('bagisto.shop.layout.full-content.before') !!}
 
-                    {!! view_render_event('bagisto.shop.layout.full-content.after') !!}
-                </div>
-            </div>
+				@yield('full-content-wrapper')
 
-            {{-- overlay loader --}}
-            <velocity-overlay-loader></velocity-overlay-loader>
+				{!! view_render_event('bagisto.shop.layout.full-content.after') !!}
+			</div>
+		</div>
 
-            <go-top bg-color="#26A37C"></go-top>
-        </div>
+		{{-- overlay loader --}}
+		<velocity-overlay-loader></velocity-overlay-loader>
 
-        {{-- footer --}}
-        @section('footer')
-            {!! view_render_event('bagisto.shop.layout.footer.before') !!}
+		<go-top bg-color="#26A37C"></go-top>
+	</div>
 
-                @include('shop::layouts.footer.index')
+	{{-- footer --}}
+	@section('footer')
+	{!! view_render_event('bagisto.shop.layout.footer.before') !!}
 
-            {!! view_render_event('bagisto.shop.layout.footer.after') !!}
-        @show
+	@include('shop::layouts.footer.index')
 
-        {!! view_render_event('bagisto.shop.layout.body.after') !!}
+	{!! view_render_event('bagisto.shop.layout.footer.after') !!}
+	@show
 
-        {{-- alert container --}}
-        <div id="alert-container"></div>
+	{!! view_render_event('bagisto.shop.layout.body.after') !!}
 
-        {{-- all scripts --}}
-        @include('shop::layouts.scripts')
-    </body>
+	{{-- alert container --}}
+	<div id="alert-container"></div>
+
+	{{-- all scripts --}}
+	@include('shop::layouts.scripts')
+</body>
+
 </html>

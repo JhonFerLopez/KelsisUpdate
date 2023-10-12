@@ -25,11 +25,12 @@
     var slice = Array.prototype.slice; // save ref to original slice()
     var splice = Array.prototype.splice; // save ref to original slice()
 
+  $classMenu = (window.location.pathname == '/')?'sticky-wrapper':'sticky-wrapper sticky-wrapper-menu';
   var defaults = {
       topSpacing: 0,
       bottomSpacing: 0,
       className: 'is-sticky',
-      wrapperClassName: 'sticky-wrapper',
+      wrapperClassName: $classMenu,
       center: false,
       getWidthFrom: '',
       widthFromWrapper: true, // works only when .getWidthFrom is empty

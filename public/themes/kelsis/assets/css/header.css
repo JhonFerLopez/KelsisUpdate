@@ -685,6 +685,11 @@ nav.main-menu li a {
   z-index: 999 !important;
 }
 
+.sticky-wrapper-menu {
+  position: relative !important;
+  background-color: var(--font-color);
+}
+
 .sticky-wrapper.is-sticky .top-header-area {
   background-color: var(--font-color);
   padding: 15px 0;

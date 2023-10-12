@@ -32,7 +32,8 @@
 	@include('shop::layouts.styles')
 </head>
 
-<body>
+<body @if (core()->getCurrentLocale() && core()->getCurrentLocale()->direction === 'rtl') class="rtl" @endif>
+	{!! view_render_event('bagisto.shop.layout.body.before') !!}
 	<!--PreLoader-->
 	<div class="loader">
 		<div class="loader-inner">
@@ -40,17 +41,17 @@
 		</div>
 	</div>
 	<!--PreLoader Ends-->
-	
-	{{-- main app --}}
+
+
 	<!-- header -->
-	<div class="top-header-area" id="sticker">
+	<div class="top-header-area @if(request()->is('/')) menu-obasolute @endif" id="sticker">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-sm-12 text-center">
 					<div class="main-menu-wrap">
 						<!-- logo -->
 						<div class="site-logo">
-							<a href="index.html">
+							<a href="/">
 							<img class="logo" src="{{ core()->getCurrentChannel()->logo_url ?? asset('themes/velocity/assets/images/logo-text.png') }}" alt="" />
 							</a>
 						</div>
@@ -59,7 +60,7 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="#">Home</a>
+								<li class="current-list-item"><a href="#">Homeeee</a>
 									<ul class="sub-menu">
 										<li><a href="index.html">Static Home</a></li>
 										<li><a href="index_2.html">Slider Home</a></li>
@@ -97,7 +98,7 @@
 										<a class="mobile-hide search-bar-icon" href="#">
 											<img src="{{ asset('themes/kelsis/assets/images/icon-search.svg') }}">
 										</a>
-										<a class="shopping-cart" href="cart.html">
+										<a class="shopping-cart" href="/checkout/onepage">
 											<img src="{{ asset('themes/kelsis/assets/images/cart.svg') }}">
 										</a>
 										<!--@include('velocity::layouts.top-nav.login-section')-->
@@ -134,89 +135,154 @@
 	</div>
 	<!-- end search area -->
 
-	<!-- hero area -->
-	<div class="hero-area hero-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-9 offset-lg-2 text-center">
-					<div class="hero-text">
-						<div class="hero-text-tablecell">
-							<p class="subtitle">Frutaroma</p>
-							<img src="{{ asset('themes/kelsis/assets/images/img-banner.png') }}" class="img-fluid">
-							<div class="hero-btns">
-								<a href="shop.html" class="boxed-btn">Ver productos</a>
-								<a href="contact.html" class="bordered-btn">Contactanos</a>
+	@if(request()->is('/'))
+		<!-- hero area -->
+		<div class="hero-area hero-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-9 offset-lg-2 text-center">
+						<div class="hero-text">
+							<div class="hero-text-tablecell">
+								<p class="subtitle">Frutaroma</p>
+								<img src="{{ asset('themes/kelsis/assets/images/img-banner.png') }}" class="img-fluid">
+								<div class="hero-btns">
+									<a href="shop.html" class="boxed-btn">Ver productos</a>
+									<a href="contact.html" class="bordered-btn">Contactanos</a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- end hero area -->
+		<!-- end hero area -->
 
-
-	<!-- Start Product Section -->
-	<div class="product-section">
-		<div class="container">
-			<div class="row">
-
-				<!-- Start Column 1 -->
-				<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
-					<h2 class="mb-4 section-title">Kelsis</h2>
-					<p class="mb-4">
-						Kelsis, palabra que tiene como significado “Cima”, “El punto más alto”, con orígenes etimológicos que datan desde las primeras lenguas indoeuropeas.
-					</p>
-					<p><a href="shop.html" class="btn">Explore</a></p>
-				</div> 
-				<!-- End Column 1 -->
-
-				<!-- Start Column 2 -->
-				<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-					<a class="product-item" href="cart.html">
-						<img src="{{ asset('themes/kelsis/assets/images/colorantes.png') }}" class="img-fluid product-thumbnail">
-						<h3 class="product-title">Colorantes</h3>
-						<strong class="product-price">$3.967 - 22.078</strong>
-
-						<span class="icon-cross">
-							<img src="{{ asset('themes/kelsis/assets/images/cross.svg') }}" class="img-fluid">
-						</span>
-					</a>
-				</div> 
-				<!-- End Column 2 -->
-
-				<!-- Start Column 3 -->
-				<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-					<a class="product-item" href="cart.html">
-						<img src="{{ asset('themes/kelsis/assets/images/escencias.png') }}" class="img-fluid product-thumbnail">
-						<h3 class="product-title">Esencias DeliSabor</h3>
-						<strong class="product-price">$3.967 - 22.078</strong>
-
-						<span class="icon-cross">
-							<img src="{{ asset('themes/kelsis/assets/images/cross.svg') }}" class="img-fluid">
-						</span>
-					</a>
+		<!-- features list section -->
+		<div class="list-section pt-80 pb-80">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+						<div class="list-box d-flex align-items-center">
+							<div class="list-icon">
+								<i class="fas fa-shipping-fast"></i>
+							</div>
+							<div class="content">
+								<h3>Free Shipping</h3>
+								<p>When order over $75</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+						<div class="list-box d-flex align-items-center">
+							<div class="list-icon">
+								<i class="fas fa-phone-volume"></i>
+							</div>
+							<div class="content">
+								<h3>24/7 Support</h3>
+								<p>Get support all day</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="list-box d-flex justify-content-start align-items-center">
+							<div class="list-icon">
+								<i class="fas fa-sync"></i>
+							</div>
+							<div class="content">
+								<h3>Refund</h3>
+								<p>Get refund within 3 days!</p>
+							</div>
+						</div>
+					</div>
 				</div>
-				<!-- End Column 3 -->
-
-				<!-- Start Column 4 -->
-				<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-					<a class="product-item" href="cart.html">
-						<img src="{{ asset('themes/kelsis/assets/images/saborizantes.png') }}" class="img-fluid product-thumbnail">
-						<h3 class="product-title">Saborizantes</h3>
-						<strong class="product-price">$43.000</strong>
-
-						<span class="icon-cross">
-							<img src="{{ asset('themes/kelsis/assets/images/cross.svg') }}" class="img-fluid">
-						</span>
-					</a>
-				</div>
-				<!-- End Column 4 -->
-
 			</div>
 		</div>
+		<!-- end features list section -->
+	@endif
+	
+	{{-- main app --}}
+	<div id="app">	
+		<product-quick-view v-if="$root.quickView"></product-quick-view>
+		<div class="">
+			<div class="row col-12 remove-padding-margin">
+				<div class="col-12 no-padding content" id="home-right-bar-container">
+					<div class="container-right row no-margin col-12 no-padding">
+						{!! view_render_event('bagisto.shop.layout.content.before') !!}
+						@yield('content-wrapper')
+						{!! view_render_event('bagisto.shop.layout.content.after') !!}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			{!! view_render_event('bagisto.shop.layout.full-content.before') !!}
+			@yield('full-content-wrapper')
+			{!! view_render_event('bagisto.shop.layout.full-content.after') !!}
+		</div>
 	</div>
-	<!-- End Product Section -->
+
+	@if(request()->is('/'))
+		<!-- Start Product Section -->
+		<div class="product-section">
+			<div class="container">
+				<div class="row">
+					<!-- Start Column 1 -->
+					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
+						<h2 class="mb-4 section-title">Kelsis</h2>
+						<p class="mb-4">
+							Kelsis, palabra que tiene como significado “Cima”, “El punto más alto”, con orígenes etimológicos que datan desde las primeras lenguas indoeuropeas.
+						</p>
+						<p><a href="shop.html" class="btn">Explore</a></p>
+					</div> 
+					<!-- End Column 1 -->
+
+					<!-- Start Column 2 -->
+					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+						<a class="product-item" href="cart.html">
+							<img src="{{ asset('themes/kelsis/assets/images/colorantes.png') }}" class="img-fluid product-thumbnail">
+							<h3 class="product-title">Colorantes</h3>
+							<strong class="product-price">$3.967 - 22.078</strong>
+
+							<span class="icon-cross">
+								<img src="{{ asset('themes/kelsis/assets/images/cross.svg') }}" class="img-fluid">
+							</span>
+						</a>
+					</div> 
+					<!-- End Column 2 -->
+
+					<!-- Start Column 3 -->
+					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+						<a class="product-item" href="cart.html">
+							<img src="{{ asset('themes/kelsis/assets/images/escencias.png') }}" class="img-fluid product-thumbnail">
+							<h3 class="product-title">Esencias DeliSabor</h3>
+							<strong class="product-price">$3.967 - 22.078</strong>
+
+							<span class="icon-cross">
+								<img src="{{ asset('themes/kelsis/assets/images/cross.svg') }}" class="img-fluid">
+							</span>
+						</a>
+					</div>
+					<!-- End Column 3 -->
+
+					<!-- Start Column 4 -->
+					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+						<a class="product-item" href="cart.html">
+							<img src="{{ asset('themes/kelsis/assets/images/saborizantes.png') }}" class="img-fluid product-thumbnail">
+							<h3 class="product-title">Saborizantes</h3>
+							<strong class="product-price">$43.000</strong>
+
+							<span class="icon-cross">
+								<img src="{{ asset('themes/kelsis/assets/images/cross.svg') }}" class="img-fluid">
+							</span>
+						</a>
+					</div>
+					<!-- End Column 4 -->
+
+				</div>
+			</div>
+		</div>
+		<!-- End Product Section -->
+	@endif
 
 	<!-- Start Why Choose Us Section 
 	<div class="why-choose-section">

@@ -1,7 +1,7 @@
 <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
 
 {{-- preloaded fonts --}}
-<!--<link rel="preload" href="{{ asset('themes/kelsis/assets/fonts/font-rango/rango.ttf') . '?o0evyv' }}" as="font" crossorigin="anonymous" />-->
+<link rel="preload" href="{{ asset('themes/kelsis/assets/fonts/font-rango/rango.ttf') . '?o0evyv' }}" as="font" crossorigin="anonymous" />
 
 {{-- bootstrap --}}
 <!--<link rel="stylesheet" href="{{ asset('themes/kelsis/assets/css/bootstrap.min.css') }}" />-->
@@ -16,10 +16,10 @@
 @endif-->
 
 {{-- mix versioned compiled file --}}
-<!--<link rel="stylesheet" href="{{ asset(mix('/css/velocity.css', 'themes/kelsis/assets')) }}" />-->
+<link rel="stylesheet" href="{{ asset(mix('/css/velocity.css', 'themes/kelsis/assets')) }}" />
 
 {{-- extra css --}}
-<!--@stack('css')-->
+@stack('css')
 
 {{-- font-awesome All Ajax --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -35,6 +35,6 @@
 <link rel="stylesheet" href="{{ asset(mix('/css/style.css', 'themes/kelsis/assets')) }}" />
 
 {{-- custom css --}}
-<!--<style>
+<style>
     {!! core()->getConfigData('general.content.custom_scripts.custom_css') !!}
-</style>-->
+</style>
